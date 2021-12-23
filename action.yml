@@ -1,12 +1,11 @@
----
 name: "web-run-test-plan-action"
 description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
 
 runs:
-  using: composite
+  using: "composite"
   steps:
-    - name: "Run a Test Plan on Autify for Web"
+    - name: Run Test Plan
       shell: bash
       id: run-test-plan-action
       run: >
