@@ -57,13 +57,13 @@ runs:
         validate_response() {
           response=$1
 
-          if [ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == "false" ]; then
+          if [ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]; then
             echo "Something went wrong. The response was :"
             echo ${response} | jq -R 'fromjson?'
             exit 1
           fi
 
-          if [ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == "true" ]; then
+          if [ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == true ]; then
             echo "Error running the test plan. The error messages are :"
             echo ${response} | jq -R 'fromjson?'
             exit 1
