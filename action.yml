@@ -58,13 +58,13 @@ runs:
           response=$1
 
           # When the response does not have `data`
-          if [[ "$( echo ${response} | jq 'has("data")' )" == "false" ]]; then
+          if [[ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == "false" ]]; then
             echo "Something went wrong. The response was :"
             echo ${response} | jq .
             exit 1
           fi
 
-          if [[ "$( echo ${response} | jq 'has("errors")' )" == "true" ]]; then
+          if [[ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == "true" ]]; then
             echo "Error running the test plan. The error messages are :"
             echo ${response} | jq .
             exit 1
@@ -80,7 +80,7 @@ runs:
           validate_response ${response}
 
           echo "Successfully started the Test Plan."
-          echo "Test Plan result ID : $(echo ${response} | jq -r .id)"
+          echo "Test Plan result ID : $(echo ${response} | jq -R 'fromjson? | .id')"
           echo "::set-output name=response::$(echo ${response})"
         }
 
