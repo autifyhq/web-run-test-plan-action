@@ -13,6 +13,7 @@
 ## Outputs
 
 | Name | Description |
+| --- | --- |
 | **response** | API response json |
 
 ## Usage Examples
@@ -23,12 +24,12 @@
 name: "example"
 on: [push]
 jobs:
-  basic:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Funtional test
-        id: function-test
-        uses: autifyhq/web-run-test-plan-action@main    
+        id: functional-test
+        uses: autifyhq/web-run-test-plan-action@action
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
