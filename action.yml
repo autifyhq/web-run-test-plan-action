@@ -59,13 +59,11 @@ runs:
         # Validate response
         if [[ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]]; then
           error "Something went wrong. The response was : ${response}"
-          echo ${response} | jq -R 'fromjson?'
           exit 1
         fi
 
         if [ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == true ]; then
           error "Error running the test plan. The error messages are : ${response}"
-          echo ${response} | jq -R 'fromjson?'
           exit 1
         fi
 
