@@ -70,4 +70,4 @@ runs:
         # Outputs
         echo "Successfully started the Test Plan."
         echo ${response} | jq -R 'fromjson?'
-        echo "::set-output name=response::$(echo ${response})"
+        echo "::set-output name=response::\"$(echo ${response})\""
