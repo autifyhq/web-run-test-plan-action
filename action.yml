@@ -76,7 +76,7 @@ runs:
 
           response=$(run_test_plan)
 
-          validate_resonse ${response}
+          validate_response ${response}
 
           echo "Successfully started the Test Plan."
           echo "Test Plan result ID : $(echo ${response} | jq -r .id)"
