@@ -57,9 +57,6 @@ runs:
         validate_response() {
           response=$1
 
-          echo "Response"
-          echo $response        
-
           # When the response does not have `data`
           if [[ "$( echo ${response} | jq 'has("data")' )" == "false" ]]; then
             echo "Something went wrong. The response was :"
@@ -78,7 +75,7 @@ runs:
           validate_parameter
 
           response=$(run_test_plan)
-          echo $(echo $response | jq .)
+          echo $(echo $response | jq -R)
 
           validate_response ${response}
 
