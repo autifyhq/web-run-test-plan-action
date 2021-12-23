@@ -64,11 +64,12 @@ runs:
         fi
 
         if [ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == true ]; then
-          error "Error running the test plan. The error messages are :"
+          error "Error running the test plan. The error messages are : ${response}"
           echo ${response} | jq -R 'fromjson?'
           exit 1
         fi
 
         # Outputs
         echo "Successfully started the Test Plan."
+        echo ${response} | jq -R 'fromjson?'
         echo "::set-output name=response::$(echo ${response})"
