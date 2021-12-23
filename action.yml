@@ -3,29 +3,6 @@ name: "web-run-test-plan-action"
 description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
 
-branding:
-  icon: "check-circle"
-  color: "purple"
-
-inputs:
-  autify_for_web_api_token:
-    description: "Personal Access Token"
-    required: true
-
-  test_plan_id:
-    description: "Test Plan ID that you want to run"
-    required: true
-
-  test_plan_api_base_url:
-    description: "Test Plan API base URL"
-    default: "https://app.autify.com/api/v1/schedules/"
-    required: false
-
-outputs:
-  response:
-    description: "API Response"
-    value: ${{ steps.run-test-plan.outputs.response }}
-
 runs:
   using: composite
   steps:
