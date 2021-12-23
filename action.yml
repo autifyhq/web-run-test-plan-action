@@ -23,10 +23,11 @@ inputs:
 
 outputs:
   response:
+    description: ""
     value: ${{ steps.run-test-plan.outputs.response }}
 
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: "Run a Test Plan on Autify for Web"
       shell: bash
