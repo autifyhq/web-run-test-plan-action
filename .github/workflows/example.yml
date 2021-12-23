@@ -1,4 +1,5 @@
-name: example
+---
+name: "example"
 
 on: [push]
 
@@ -7,5 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Funtional test
-        id: functional-test
-        uses: autifyhq/web-run-test-plan-action@main
+        id: function-test
+        uses: autifyhq/web-run-test-plan-action@action
+        with:
+          autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
+          test_plan_id: ${{ secrets.TEST_PLAN_ID }}
+
+      - name: Ouputs
+        run: >
+          echo "Test Result ID is $(echo ${{ steps.function-test.outputs.response }} | jq -r .id)"

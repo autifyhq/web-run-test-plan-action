@@ -1,14 +1,86 @@
-# https://docs.github.com/ja/actions/creating-actions/metadata-syntax-for-github-actions
-
-name: "Run Test Plan at Autify for Mobile"
-description: "Run a Test Plan at Autify for Mobile on GitHub Actions"
+---
+name: "web-run-test-plan-action"
+description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
+
+branding:
+  icon: "check-circle"
+  color: "purple"
+
+inputs:
+  autify_for_web_api_token:
+    description: "Personal Access Token"
+    required: true
+
+  test_plan_id:
+    description: "Test Plan ID that you want to run"
+    required: true
+
+  test_plan_api_base_url:
+    description: "Test Plan API base URL"
+    default: https://app.autify.com/api/v1/schedules/
+    required: false
+
+outputs:
+  response:
+    value: ${{ steps.run-test-plan.outputs.response }}
 
 runs:
   using: "composite"
   steps:
-    - name: Run Test Plan
+    - name: "Run a Test Plan on Autify for Web"
       shell: bash
       id: run-test-plan-action
       run: >
-        echo "hello"
+        # Mask the value if it is passed in a way other than GitHub secrets
+        echo "::add-mask::${{ inputs.autify_for_web_api_token }}"
+
+        run_test_plan() {
+          echo $(curl -s -X POST \
+            -H "Authorization: Bearer ${{ inputs.autify_for_web_api_token }}" \
+            -H "Content-Type: application/json" \
+            "${{ inputs.test_plan_api_base_url }}${{ inputs.test_plan_id }}")
+        }
+
+        validate_parameter() {
+          if [ -z "${{ inputs.autify_for_web_api_token }}" ]; then
+            error "Token should exist"
+            exit 1
+          fi
+
+          if ! echo "${{ inputs.test_plan_id }}" | grep -Eq '^[0-9]+$'; then
+            echo "Test Plan ID should be string of digits"
+            exit 1
+          fi
+        }
+
+        validate_response() {
+          response=$1          
+
+          # When the response does not have `data`
+          if [[ "$( echo ${response} | jq 'has("data")' )" == "false" ]]; then
+            echo "Something went wrong. The response was :"
+            echo ${response} | jq .
+            exit 1
+          fi
+
+          if [[ "$( echo ${response} | jq 'has("errors")' )" == "true" ]]; then
+            echo "Error running the test plan. The error messages are :"
+            echo ${response} | jq .
+            exit 1
+          fi
+        }
+
+        main() {
+          validate_parameter
+
+          response=$(run_test_plan)
+
+          validate_resonse ${response}
+
+          echo "Successfully started the Test Plan."
+          echo "Test Plan result ID : $(echo ${response} | jq -r .id)"
+          echo "::set-output name=response::$(echo ${response})"
+        }
+
+        main "$@"
