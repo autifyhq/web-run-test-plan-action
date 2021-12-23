@@ -16,4 +16,4 @@ jobs:
 
       - name: Ouputs
         run: >
-          echo "Test Result ID is $(echo ${{ steps.functional-test.outputs.response }} | jq -R 'fromjson? | .data.id')"
+          echo "Test Result ID is $(echo "${{ steps.functional-test.outputs.response }}" | jq -R 'fromjson? | .data.id')"
