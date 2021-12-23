@@ -1,5 +1,7 @@
-name: "web-run-test-plan-action"
-description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
+# https://docs.github.com/ja/actions/creating-actions/metadata-syntax-for-github-actions
+
+name: "Run Test Plan at Autify for Mobile"
+description: "Run a Test Plan at Autify for Mobile on GitHub Actions"
 author: "Autify"
 
 runs:
