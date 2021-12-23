@@ -32,6 +32,8 @@ runs:
       shell: bash
       id: run-test-plan-action
       run: >
+        set -e
+
         # Mask the value if it is passed in a way other than GitHub secrets
         echo "::add-mask::${{ inputs.autify_for_web_api_token }}"
 
@@ -57,7 +59,7 @@ runs:
         validate_response() {
           response=$1
 
-          if [ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]; then
+          if [[ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]]; then
             echo "Something went wrong. The response was :"
             echo ${response} | jq -R 'fromjson?'
             exit 1
