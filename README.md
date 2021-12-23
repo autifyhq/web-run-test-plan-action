@@ -12,6 +12,9 @@
 
 ## Outputs
 
+| Name | Description |
+| **response** | API response json |
+
 ## Usage Examples
 
 > Runs a Test Plan on Autify for Web.
