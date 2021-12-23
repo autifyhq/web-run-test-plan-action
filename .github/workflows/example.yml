@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Funtional test
         id: functional-test
-        uses: autifyhq/mobile-run-test-plan-action@main
+        uses: autifyhq/web-run-test-plan-action@main
