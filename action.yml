@@ -23,7 +23,7 @@ inputs:
 
 outputs:
   response:
-    value: ${{ steps.run-test-plan.outputs.response }}
+    value: ${{ steps.run-test-plan-action.outputs.response }}
 
 runs:
   using: "composite"

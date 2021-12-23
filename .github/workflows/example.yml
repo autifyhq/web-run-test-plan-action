@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Funtional test
-        id: function-test
+        id: functional-test
         uses: autifyhq/web-run-test-plan-action@action
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
@@ -16,4 +16,4 @@ jobs:
 
       - name: Ouputs
         run: >
-          echo "Test Result ID is $(echo ${{ steps.function-test.outputs.response }} | jq -r .id)"
+          echo "Test Result ID is $(echo ${{ steps.functional-test.outputs.response }} | jq -r .id)"
