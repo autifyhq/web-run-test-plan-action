@@ -75,6 +75,7 @@ runs:
           validate_parameter
 
           response=$(run_test_plan)
+          echo $(echo $response | jq .)
 
           validate_response ${response}
 
