@@ -25,9 +25,6 @@ outputs:
   response:
     value: ${{ steps.run-test-plan.outputs.response }}
 
-  error:
-    value: ${{ steps.run-test-plan.outputs.error }}
-
 runs:
   using: "composite"
   steps:
@@ -37,7 +34,6 @@ runs:
       run: |
         error () {
           echo "::error ::${1}"
-          echo "::set-output name=error::${1}"
         }
 
         # Mask the value if it is passed in a way other than GitHub secrets
@@ -63,7 +59,7 @@ runs:
         # Validate response
         if [[ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]]; then
           error "Something went wrong. The response was :"
-          echo ${response} | jq -R 'fromjson?'
+          error ${response} | jq -R 'fromjson?'
           exit 1
         fi
 
