@@ -75,7 +75,7 @@ runs:
           validate_parameter
 
           response=$(run_test_plan)
-          echo $(echo $response | jq -R 'fromjson?')
+          echo $(echo ${response} | jq -R 'fromjson? | has("data")')
 
           validate_response ${response}
 
