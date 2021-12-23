@@ -3,6 +3,10 @@ name: "web-run-test-plan-action"
 description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
 
+branding:
+  icon: "check-circle"
+  color: "purple"
+
 inputs:
   autify_for_web_api_token:
     description: "Personal Access Token"
