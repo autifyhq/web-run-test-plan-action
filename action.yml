@@ -25,6 +25,9 @@ outputs:
   response:
     value: ${{ steps.run-test-plan.outputs.response }}
 
+  error:
+    value: ${{ steps.run-test-plan.outputs.error }}
+
 runs:
   using: "composite"
   steps:
@@ -32,6 +35,11 @@ runs:
       shell: bash
       id: run-test-plan-action
       run: |
+        error () {
+          echo "::error ::${1}"
+          echo "::set-output name=error::${1}"
+        }
+
         # Mask the value if it is passed in a way other than GitHub secrets
         echo "::add-mask::${{ inputs.autify_for_web_api_token }}"
 
@@ -42,7 +50,7 @@ runs:
         fi
 
         if ! echo "${{ inputs.test_plan_id }}" | grep -Eq '^[0-9]+$'; then
-          echo "Test Plan ID should be string of digits"
+          error "Test Plan ID should be string of digits"
           exit 1
         fi
 
@@ -54,13 +62,13 @@ runs:
 
         # Validate response
         if [[ "$( echo ${response} | jq -R 'fromjson? | has("data")' )" == false ]]; then
-          echo "Something went wrong. The response was :"
+          error "Something went wrong. The response was :"
           echo ${response} | jq -R 'fromjson?'
           exit 1
         fi
 
         if [ "$( echo ${response} | jq -R 'fromjson? | has("errors")' )" == true ]; then
-          echo "Error running the test plan. The error messages are :"
+          error "Error running the test plan. The error messages are :"
           echo ${response} | jq -R 'fromjson?'
           exit 1
         fi
