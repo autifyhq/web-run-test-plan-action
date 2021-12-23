@@ -1,5 +1,4 @@
----
-name: "example"
+name: example
 
 on: [push]
 
