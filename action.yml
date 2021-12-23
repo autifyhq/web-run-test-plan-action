@@ -55,7 +55,10 @@ runs:
         }
 
         validate_response() {
-          response=$1          
+          response=$1
+
+          echo "Response"
+          echo $response        
 
           # When the response does not have `data`
           if [[ "$( echo ${response} | jq 'has("data")' )" == "false" ]]; then
