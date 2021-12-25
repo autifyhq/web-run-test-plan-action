@@ -1,5 +1,5 @@
 ---
-name: "Integration test"
+name: "integration-test"
 
 on: [push]
 
