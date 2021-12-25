@@ -1,6 +1,7 @@
 # Autify for Web Run Test Plan Action
 
 [![integration-test](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml)
+![GitHub Action Version](https://img.shields.io/github/v/release/autifyhq/web-run-test-plan-action.svg)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/autifyhq/web-run-test-plan-action/main/LICENSE)
 
 ## Inputs
@@ -30,7 +31,7 @@ jobs:
     steps:
       - name: Funtional test
         id: functional-test
-        uses: autifyhq/web-run-test-plan@v1
+        uses: autifyhq/web-run-test-plan-action@v1.0.0
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
