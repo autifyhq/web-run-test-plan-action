@@ -1,5 +1,6 @@
 # web-run-test-plan-action
 
+[![Integration test](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/autifyhq/web-run-test-plan-action/main/LICENSE)
 
 ## Inputs
@@ -34,5 +35,3 @@ jobs:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
 ```
-
-[![example](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/example.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/example.yml)
