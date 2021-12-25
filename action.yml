@@ -1,6 +1,6 @@
 ---
-name: "Autify for Web Run Test Plan Action"
-description: "Runs a test plan to run automated E2E test scenarios on Autify for Web"
+name: "Autify for Web Run Test Plan"
+description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
 
 branding:
