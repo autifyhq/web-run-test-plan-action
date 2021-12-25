@@ -1,6 +1,6 @@
 # Autify for Web Run Test Plan Action
 
-[![Integration test](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml)
+[![integration-test](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/integration-test.yml)
 [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/autifyhq/web-run-test-plan-action/main/LICENSE)
 
 ## Inputs
