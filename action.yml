@@ -1,5 +1,5 @@
 ---
-name: "Autify for Web Run Test Plan Action"
+name: "Autify for Web Run Test Plan"
 description: "Runs a Test Plan to execute automated E2E tests on Autify for Web"
 author: "Autify"
 
