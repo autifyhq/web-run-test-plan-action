@@ -19,7 +19,7 @@ jobs:
 
       - name: Run a Test Plan on Autify for Web
         id: run-test-plan
-        uses: autifyhq/web-run-test-plan-action@v1
+        uses: autifyhq/web-run-test-plan-action@v1.0.0
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
