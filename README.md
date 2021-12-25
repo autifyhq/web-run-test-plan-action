@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Funtional test
         id: functional-test
-        uses: autifyhq/web-run-test-plan-action@main
+        uses: autifyhq/web-run-test-plan@v1
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
