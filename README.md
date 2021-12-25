@@ -34,5 +34,3 @@ jobs:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
           test_plan_id: ${{ secrets.TEST_PLAN_ID }}
 ```
-
-[![example](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/example.yml/badge.svg)](https://github.com/autifyhq/web-run-test-plan-action/actions/workflows/example.yml)

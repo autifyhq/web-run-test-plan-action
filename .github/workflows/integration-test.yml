@@ -1,5 +1,5 @@
 ---
-name: "example"
+name: "Integration Test"
 
 on: [push]
 
