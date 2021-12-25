@@ -1,5 +1,5 @@
 ---
-name: "Integration Test"
+name: "Integration test"
 
 on: [push]
 
@@ -9,8 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Funtional test
-        id: functional-test
+      - name: Run a Test Plan on Autify for Web
+        id: run-test-plan
         uses: ./
         with:
           autify_for_web_api_token: ${{ secrets.AUTIFY_FOR_WEB_API_TOKEN }}
@@ -18,4 +18,4 @@ jobs:
 
       - name: Ouputs
         run: >
-          echo "Test Result ID is $(echo ${{ steps.functional-test.outputs.response }} | jq -R 'fromjson? | .data.id')"
+          echo "Test Result ID is $(echo ${{ steps.run-test-plan.outputs.response }} | jq -R 'fromjson? | .data.id')"
