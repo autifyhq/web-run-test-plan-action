@@ -45,7 +45,7 @@ runs:
           exit 1
         fi
 
-        if ! echo "${{ inputs.test_plan_id }}" | grep -Eq '^[0-9]+$'; then
+        if ! echo "${{ inputs.test_plan_id }}" | grep -E '^[0-9]+$'; then
           error "Test Plan ID should be string of digits"
           exit 1
         fi
